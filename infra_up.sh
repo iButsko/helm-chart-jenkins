@@ -19,6 +19,7 @@
 #chmod +x kops-linux-amd64
 #sudo mv kops-linux-amd64 /usr/local/bin/kops
 #kops version
+export KOPS_STATE_STORE=s3://ibutsko
 
 ssh-keygen -f ~/.ssh/ivan.k8s.local -y
 
