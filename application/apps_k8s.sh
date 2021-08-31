@@ -79,9 +79,9 @@ cd -
 
 
 
-helm install db application/helms/db/
-helm install web application/helms/web/
-helm install words application/helms/words/
+helm upgrade db application/helms/db/
+helm upgrade web application/helms/web/
+helm upgrade words application/helms/words/
 
 
 kubectl get pod
