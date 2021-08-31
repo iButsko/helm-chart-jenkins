@@ -1,12 +1,38 @@
-replicaCount: 1
-name: web
+replicaCount: ENC[AES256_GCM,data:Jw==,iv:JSaia8NBFBovYCu1AakUaEdxD8yRSjdgJllabjsOOmA=,tag:uNNZIlwbFYHO3oPF/mYpgA==,type:int]
+name: ENC[AES256_GCM,data:6J7Y,iv:ylHzSqlJzgiQz0mELyJYsgcRT4qpUwAWJEs+FBGuBBU=,tag:LOJGD6Pmwwg7neKsGeMamg==,type:str]
 app:
-    labels: words-web
+    labels: ENC[AES256_GCM,data:wvQD9zPAlhxS,iv:N86/zt/2MFPVvOCDW8MXfy7sOU8QWpJs3Z5+64dn7Mo=,tag:o+tBabwIQ8oq+nLWB7Q0cw==,type:str]
 service:
-    type: LoadBalancer
-    port: 8081
-    targetPort: 80
-    containerPort: 80
+    type: ENC[AES256_GCM,data:MfiFd/Auask0IRLE,iv:pQapsCxG4pLhubGoqhprDjwlaCllmD/mh/6FS2YJAC0=,tag:vU6XBDiP1WglVpDekgFxeQ==,type:str]
+    port: ENC[AES256_GCM,data:5hLr0A==,iv:P76xHOA4MoqrviZ1JzOOiuBZ9zPWnn6My7Z05dRNg5o=,tag:n3m5r7n9LzPF9Zm9gaflYA==,type:int]
+    targetPort: ENC[AES256_GCM,data:ce4=,iv:2f/kGG8cZivq83K3u2fWakSVDqZxmYc/EnYExlILdPI=,tag:Z8FBOUu5ZoYG3trxRe5M4Q==,type:int]
+    containerPort: ENC[AES256_GCM,data:Uig=,iv:ZmETQPzWWBmP8IEkmKqFX/5sE4j4yrn1lxvgiNHZEtU=,tag:f/w5kLbjXUdSh83QW9OjjA==,type:int]
 deployment:
     image:
-        repository: dockersamples/k8s-wordsmith-web
+        repository: ENC[AES256_GCM,data:Wiu8kmJJq+BNR84XbzTv2FHqs9P2PbevJy+Hr5tBRg==,iv:OcrJVh5CBNpR2crZvLZXiQa9B3Gjx+sWpNhoU49Sefw=,tag:hvqzno+bvrvrnkN/XlmJBA==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age: []
+    lastmodified: "2021-08-31T15:17:00Z"
+    mac: ENC[AES256_GCM,data:m/Zt1/8rX97TtDZLzJhpc4UWzSjV7VCxuA2mHIcDfJ+heZDOjU4nPBpcNB7F2LLHry9+0Ipa2fo/VRqInhWIxCbYzMm5jvqGA9Yy3F4V8HcvnfErb+VK4oPhZdUBfO8BSqCNjpG1IaEtE3nzoCmEZKyfzROyX23kNAbfbghhMx0=,iv:nqym0NhiLSKc5DQEEMpMC0mjkgfa2i9oEo0NAR/89PU=,tag:4e6IOxfFgvwBBUmEnXZ70w==,type:str]
+    pgp:
+        - created_at: "2021-08-31T15:17:00Z"
+          enc: |
+            -----BEGIN PGP MESSAGE-----
+
+            hQEMA4MtkfS+oCVpAQf/fI5xPv3sOqrobzgZyma22P/8GKqJVz0hB5Nlpoy/R/A8
+            5S6TWINrCf/6UXXnQfYuTfnC8kyAe0BdjTcfhE5uKrpDp3GBpvGupWEZLLalxW9V
+            wBPtAj0PXuA1zdbmGbmpyxO4QcEOmdaGyMtSmX4cbvKVwl6P6FqfthLw05OkXklm
+            Ei17JVdkC6rqi4yK3b1qN6uBBpViorXs3zPgyivAD6j/3dG2qPPICew1oMUqMHJN
+            /x5bYqxGX47d/toQWw6QzKt/rE/7nN7uak4OD8YT91jd9keqn0y//APrxXZnjIgB
+            N+F0Y5/4QmYSIzaT9j3z76Vbb8leZcVvj52xguAf4tJeAbFfLiRX15ok5lPIbuG+
+            bLHFxHIWjqiyNXVo1Np7lZ378hk58fy6CYwvjRdvD1wAsqn9Ux7gPE4vsCkhWTIn
+            OUxxjJRsQB1WdRQQZRveEvsIEvu3vEc+pYagu6viHQ==
+            =gNsA
+            -----END PGP MESSAGE-----
+          fp: B611A2F9F11D0FF82568805119F9B5DAEA91FF86
+    unencrypted_suffix: _unencrypted
+    version: 3.7.1
