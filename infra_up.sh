@@ -1,6 +1,5 @@
-#!/bin/bash
+#!bin/bash
 
-#Install packages
 #apt-get update
 #apt-get install curl -y
 #apt-get install unzip -y
@@ -22,9 +21,6 @@
 export KOPS_STATE_STORE=s3://ibutsko
 
 ssh-keygen -f ~/.ssh/ivan.k8s.local -y
-
-kops create secret --name ivan.k8s.local --state s3://ibutsko sshpublickey admin -i ~/.ssh/ivan.k8s.local.pub
-
 
 kops create cluster \
 --name="ivan.k8s.local" \
