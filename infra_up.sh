@@ -19,8 +19,8 @@
 #sudo mv kops-linux-amd64 /usr/local/bin/kops
 #kops version
 export KOPS_STATE_STORE=s3://ibutsko
-kops create secret --name ivan.k8s.local --state s3://ibutsko sshpublickey admin -i ~/.ssh/ivan.k8s.local.pub
-ssh-keygen -f ~/.ssh/ivan.k8s.local -y
+
+ssh-keygen -f ~/.ssh/id_rsa
 
 kops create cluster \
 --name="ivan.k8s.local" \
