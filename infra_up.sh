@@ -19,23 +19,36 @@
 #sudo mv kops-linux-amd64 /usr/local/bin/kops
 #kops version
 export KOPS_STATE_STORE=s3://ibutsko
+export NAME_CLUSTER="ivan.k8s.local" 
+export MASTER_INSTANCE_TYPE="t3.medium"
+export NODE_INSTANCE_TYPE="t3.medium"
+export NODE_COUNT=3
+export MASTER_COUNT=3
+ssh-keygen -f ~/.ssh/id_rsa
 
-ssh-keygen -f ~/.ssh/id_rsa -y
+#kops create secret --name $NAME_CLUSTER sshpublickey admin -i ~/.ssh/id_rsa.pub
 
 kops create cluster \
---name="ivan.k8s.local" \
---state="s3://ibutsko" \
---master-count 3 \
---master-size="t3.medium" \
---node-count 4 \
---node-size="t3.medium" \
---zones "eu-central-1a,eu-central-1b" \
---cloud="aws" \
+--zones "eu-central-1a,eu-central-1b,eu-central-1c" \
+--master-size $MASTER_INSTANCE_TYPE \
+--master-count $MASTER_COUNT \
+--node-size $NODE_INSTANCE_TYPE \
+--node-count $NODE_COUNT \
 --networking cilium \
---topology=private \
---bastion=true
---yes
-kops create secret --name ivan.k8s.local --state s3://ibutsko sshpublickey admin -i ~/.ssh/id_rsa.pub
+--topology private \
+--bastion \
+--name=$NAME_CLUSTER \
+--yes \
+
+echo "Creating  a secret for using bastion..."
+kops create secret --name $NAME_CLUSTER sshpublickey admin -i ~/.ssh/id_rsa.pub
+
+echo "Export kubeconfig file for validate command..."
+#kops export kubecfg --admin
+kops export kubecfg $NAME_CLUSTER --admin
+
+echo "Validate cluster..."
+kops validate cluster --name $NAME_CLUSTER --wait 20m
 #kops update cluster --name="ivan.k8s.local" --state="s3://ibutsko" --yes
-kops export kubecfg --state s3://ibutsko --name ivan.k8s.local --admin
-kops validate cluster --name ivan.k8s.local --state s3://ibutsko --wait 10m
+#kops export kubecfg --state s3://ibutsko --name ivan.k8s.local --admin
+#kops validate cluster --name ivan.k8s.local --state s3://ibutsko --wait 10m
