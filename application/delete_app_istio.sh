@@ -1,10 +1,10 @@
 
 #!/bin/bash
 # Remove helm charts
-helm delete db helms/db/
-helm delete web helms/web/
-helm delete words helms/words/
-kubectl delete -f helms/ingress-controller.yaml
+helm delete db helm-charts/db/
+helm delete web helm-charts/web/
+helm delete words helm-charts/words/
+kubectl delete -f helm-charts/ingress-controller.yaml
 
 # Remove Istio
 kubectl delete -f samples/addons
