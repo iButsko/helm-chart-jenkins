@@ -1,5 +1,28 @@
 #!/bin/bash
 
+#Install packages
+apt-get update
+apt-get install curl -y
+apt-get install unzip -y
+apt-get install openssh-client -y
+
+#Install kubectl
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+mv ./kubectl /usr/local/bin/kubectl
+
+#Install awscli version 2
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+./aws/install
+aws --version
+
+#Install kops
+curl -LO https://github.com/kubernetes/kops/releases/download/$(curl -s https://api.github.com/repos/kubernetes/kops/releases/latest | grep tag_name | cut -d '"' -f 4)/kops-linux-amd64
+chmod +x kops-linux-amd64
+mv kops-linux-amd64 /usr/local/bin/kops
+kops version
+
 ssh-keygen -f ~/.ssh/ivan.k8s.local
 
 kops create secret --name ivan.k8s.local --state s3://ibutsko sshpublickey admin -i ~/.ssh/ivan.k8s.local.pub
