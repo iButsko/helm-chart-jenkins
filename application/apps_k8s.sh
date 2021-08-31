@@ -31,9 +31,9 @@ kops export kubecfg --state s3://ibutsko --name ivan.k8s.local --admin
 
 gpg --import sops/pgp/sops_functional_tests_key.asc
 
-sops -d -i helms/db/values.yaml
-sops -d -i helms/web/values.yaml
-sops -d -i helms/words/values.yaml
+sops -d -i application/helms/db/values.yaml
+sops -d -i application/helms/web/values.yaml
+sops -d -i application/helms/words/values.yaml
 
 #curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
 #chmod 700 get_helm.sh
