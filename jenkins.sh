@@ -1,10 +1,4 @@
 #!bin/bash
-docker run \
-  --name jenkins-docker \
-  --detach \
-  --privileged \
-  --network jenkins \
-  --network-alias docker \
-  --env DOCKER_TLS_CERTDIR=/certs \
-  --volume jenkins-docker-certs:/certs/client \
-  --volume jenkins-data:/var/jenkins_home \
+docker pull jenkins/jenkins
+docker build .
+docker run -p 8085:8080 --name=jenkinsasdasd jenkins/jenkins
