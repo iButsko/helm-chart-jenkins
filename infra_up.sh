@@ -34,6 +34,7 @@ kops create cluster \
 --networking cilium \
 --topology=private \
 --bastion=true
+--yes
 kops create secret --name ivan.k8s.local --state s3://ibutsko sshpublickey admin -i ~/.ssh/id_rsa.pub
 #kops update cluster --name="ivan.k8s.local" --state="s3://ibutsko" --yes
 kops export kubecfg --state s3://ibutsko --name ivan.k8s.local --admin
