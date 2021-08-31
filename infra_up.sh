@@ -1,4 +1,4 @@
-#!/bin.bash
+#!/bin/bash
 
 ssh-keygen -f ~/.ssh/ivan.k8s.local
 
