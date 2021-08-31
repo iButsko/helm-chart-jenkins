@@ -1,0 +1,6 @@
+apiVersion: v2
+name: words
+description:  Helm chart for Kubernetes which describes the folder words in dockersamples/k8s-wordsmith-db
+type: application
+version: 0.0.1
+

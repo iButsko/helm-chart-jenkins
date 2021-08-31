@@ -1,0 +1,12 @@
+replicaCount: 1
+name: web
+app:
+    labels: words-web
+service:
+    type: LoadBalancer
+    port: 8081
+    targetPort: 80
+    containerPort: 80
+deployment:
+    image:
+        repository: dockersamples/k8s-wordsmith-web

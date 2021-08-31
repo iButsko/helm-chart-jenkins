@@ -1,0 +1,14 @@
+name: words
+app:
+    labels: words-api
+spec:
+    name: api
+replicas: 5
+service:
+    clusterIP: None
+    port: 8080
+    targetport: 8080
+deployment:
+    containerPort: 8080
+    image:
+        repository: dockersamples/k8s-wordsmith-api

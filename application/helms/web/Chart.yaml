@@ -1,0 +1,7 @@
+apiVersion: v2
+name: web
+description:  Helm chart for Kubernetes which describes the folder web in dockersamples/k8s-wordsmith-db
+type: application
+version: 0.0.1
+
+

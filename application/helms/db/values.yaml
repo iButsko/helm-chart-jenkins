@@ -1,0 +1,10 @@
+name: db
+app:
+    labels: words-db
+service:
+    clusterIP: None
+    port: 5432
+    targetPort: 5432
+deployment:
+    image:
+        repository: dockersamples/k8s-wordsmith-db
