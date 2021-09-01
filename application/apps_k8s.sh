@@ -36,9 +36,9 @@
 
 #kops export kubecfg --state s3://ibutsko --name ivan.k8s.local --admin
 
-git clone https://github.com/mozilla/sops.git
-wget https://github.com/mozilla/sops/releases/download/v3.7.1/sops_3.7.1_amd64.deb
-dpkg -i sops_3.7.1_amd64.deb
+#git clone https://github.com/mozilla/sops.git
+#wget https://github.com/mozilla/sops/releases/download/v3.7.1/sops_3.7.1_amd64.deb
+#dpkg -i sops_3.7.1_amd64.deb
 
 gpg --import sops/pgp/sops_functional_tests_key.asc
 
@@ -46,9 +46,9 @@ sops -d -i application/helms/db/values.yaml
 sops -d -i application/helms/web/values.yaml
 sops -d -i application/helms/words/values.yaml
 
-curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
-chmod 700 get_helm.sh
-./get_helm.sh
+#curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+#chmod 700 get_helm.sh
+#./get_helm.sh
 
 #curl -sL https://istio.io/downloadIstioctl | sh -
 #chmod 700 istio-1.11.1
@@ -61,23 +61,18 @@ chmod 700 get_helm.sh
 #kubectl label namespace default istio-injection=enabled
 #cd -
 
-#curl -sL https://istio.io/downloadIstio | sh -
-#cd istio-1.11.1
-#export PATH=$PWD/bin:$PATH
-#kubectl get ns
-#istioctl install -y
-#kubectl get ns
-#kubectl label namespace default istio-injection=enabled
-#cd -
-
-
-
-
+curl -sL https://istio.io/downloadIstio | sh -
+cd istio-1.11.1
+export PATH=$PWD/bin:$PATH
+kubectl get ns
+istioctl install -y
+kubectl get ns
+kubectl label namespace default istio-injection=enabled
+cd -
 
 helm install db application/helms/db/
 helm install web application/helms/web/
 helm install words application/helms/words/
-
 
 kubectl get pod
 kubectl get ns
