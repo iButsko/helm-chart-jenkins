@@ -61,27 +61,22 @@ chmod 700 get_helm.sh
 #kubectl label namespace default istio-injection=enabled
 #cd -
 
-curl -sL https://istio.io/downloadIstio | sh -
-cd istio-1.11.1
-export PATH=$PWD/bin:$PATH
-echo "Installation Completed"
-echo "Get k8s namespace"
-kubectl get ns
-echo "Install istio in cluster"
-istioctl install -y
-kubectl get ns
-echo "Installation Completed"
-echo "Inject to ns"
-kubectl label namespace default istio-injection=enabled
-cd -
+#curl -sL https://istio.io/downloadIstio | sh -
+#cd istio-1.11.1
+#export PATH=$PWD/bin:$PATH
+#kubectl get ns
+#istioctl install -y
+#kubectl get ns
+#kubectl label namespace default istio-injection=enabled
+#cd -
 
 
 
 
 
-helm upgrade db application/helms/db/
-helm upgrade web application/helms/web/
-helm upgrade words application/helms/words/
+helm install db application/helms/db/
+helm install web application/helms/web/
+helm install words application/helms/words/
 
 
 kubectl get pod
